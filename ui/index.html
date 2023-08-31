@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>HireApp</title>
+
+	<!-- Meta Tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="author" content="Webestica.com">
+	<meta name="description" content="Booking - Multipurpose Online Booking Theme">
+
+	<!-- Dark mode -->
+	<script>
+		const storedTheme = localStorage.getItem('theme')
+ 
+		const getPreferredTheme = () => {
+			if (storedTheme) {
+				return storedTheme
+			}
+			return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+		}
+
+		const setTheme = function (theme) {
+			if (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+				document.documentElement.setAttribute('data-bs-theme', 'dark')
+			} else {
+				document.documentElement.setAttribute('data-bs-theme', theme)
+			}
+		}
+
+		setTheme(getPreferredTheme())
+
+		window.addEventListener('DOMContentLoaded', () => {
+		    var el = document.querySelector('.theme-icon-active');
+			if(el != 'undefined' && el != null) {
+				const showActiveTheme = theme => {
+				const activeThemeIcon = document.querySelector('.theme-icon-active use')
+				const btnToActive = document.querySelector(`[data-bs-theme-value="${theme}"]`)
+				const svgOfActiveBtn = btnToActive.querySelector('.mode-switch use').getAttribute('href')
+
+				document.querySelectorAll('[data-bs-theme-value]').forEach(element => {
+					element.classList.remove('active')
+				})
+
+				btnToActive.classList.add('active')
+				activeThemeIcon.setAttribute('href', svgOfActiveBtn)
+			}
+
+			window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+				if (storedTheme !== 'light' || storedTheme !== 'dark') {
+					setTheme(getPreferredTheme())
+				}
+			})
+
+			showActiveTheme(getPreferredTheme())
+
+			document.querySelectorAll('[data-bs-theme-value]')
+				.forEach(toggle => {
+					toggle.addEventListener('click', () => {
+						const theme = toggle.getAttribute('data-bs-theme-value')
+						localStorage.setItem('theme', theme)
+						setTheme(theme)
+						showActiveTheme(theme)
+					})
+				})
+
+			}
+		})
+		
+	</script>
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="assets/images/favicon.ico">
+
+	<!-- Google Font -->
+	<link rel="preconnect" href="https://fonts.googleapis.com/">
+	<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&amp;family=Poppins:wght@400;500;700&amp;display=swap">
+
+	<!-- Plugins CSS -->
+	<link rel="stylesheet" type="text/css" href="assets/vendor/font-awesome/css/all.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/vendor/bootstrap-icons/bootstrap-icons.css">
+	<link rel="stylesheet" type="text/css" href="assets/vendor/choices/css/choices.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/vendor/flatpickr/css/flatpickr.min.css">
+
+	<!-- Theme CSS -->
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+
+</head>
+
+<body>
+
+<!-- Header START -->
+<header class="navbar-light header-sticky">
+	<!-- Logo Nav START -->
+	<nav class="navbar navbar-expand-xl">
+		<div class="container">
+			<!-- Logo START -->
+			<a class="navbar-brand" href="index.html">
+				<h4>HireApp</h4>
+			</a>
+			<!-- Logo END -->
+
+			<!-- Responsive navbar toggler -->
+			<button class="navbar-toggler ms-auto ms-sm-0 p-0 p-sm-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-animation">
+					<span></span>
+					<span></span>
+					<span></span>
+				</span>
+        <span class="d-none d-sm-inline-block small">Menu</span>
+			</button>
+
+	
+
+			<!-- Main navbar START -->
+			<div class="navbar-collapse collapse" id="navbarCollapse">
+				<ul class="navbar-nav navbar-nav-scroll me-auto">
+
+					<!-- Nav item Listing -->
+					<li class="nav-item d-sm-flex d-block">
+						<a class="nav-link" href="index.html">Home</a>
+						<a class="nav-link" href="list.html">Listings</a>
+						<a class="nav-link" href="detail.html">Details</a>
+					</li>
+				</ul>
+			</div>
+
+		</div>
+	</nav>
+	<!-- Logo Nav END -->
+</header>
+<!-- Header END -->
+
+<!-- **************** MAIN CONTENT START **************** -->
+<main>
+	
+<!-- =======================
+Main Banner START -->
+<section class="pt-0 pt-lg-5">
+	<div class="container">
+		<div class="row">
+
+			<div class="col-lg-10 ms-auto position-relative">
+				<img src="assets/images/bg/03.png" class="rounded-3" alt="">
+
+				<!-- Search START -->
+				<div class="col-11 col-sm-10 col-lg-8 col-xl-6 position-lg-middle ms-lg-8 ms-xl-7">
+					<div class="card shadow pb-0 mt-n7 mt-sm-n8 mt-lg-0">
+
+						<!-- Card header -->
+						<div class="card-header border-bottom p-3 p-sm-4">
+							<h5 class="card-title mb-0">Book Your Truck</h5>
+						</div>
+
+						<!-- Card body START -->
+						<form class="card-body form-control-border p-3 p-sm-4">
+							<!-- Tabs START -->
+							<div class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+								<!-- <div class="form-check form-check-inline active" id="cab2-one-way-tab" data-bs-toggle="pill" data-bs-target="#cab2-one-way" role="tab" aria-controls="cab2-one-way" aria-selected="true">
+									<input class="form-check-input" type="radio" name="inlineRadioOptions" id="cabRadio1" value="option1" checked>
+									<label class="form-check-label" for="cabRadio1">One Way</label>
+								</div> -->
+								<!-- <div class="form-check form-check-inline" id="cab2-round-way-tab" data-bs-toggle="pill" data-bs-target="#cab2-round-way" role="tab" aria-controls="cab2-round-way" aria-selected="false">
+									<input class="form-check-input" type="radio" name="inlineRadioOptions" id="cabRadio2" value="option2">
+									<label class="form-check-label" for="cabRadio2">Round Trip</label>
+								</div> -->
+							</div>
+							<!-- Tabs END -->
+
+							<!-- Tabs content START -->
+							<div class="tab-content my-4" id="pills-tabContent">
+								<!-- One way START -->
+								<div class="tab-pane fade show active" id="cab2-one-way" role="tabpanel" aria-labelledby="cab2-one-way-tab">
+									<div class="row g-2 g-md-4">
+										<!-- Pickup -->
+										<div class="col-md-6 position-relative">
+											<div class="form-fs-lg form-control-transparent">
+												<label class="form-label small">Pickup</label>
+												<select class="form-select js-choice" data-search-enabled="true">
+													<option value="">Select location</option>
+													<option>Colombo</option>
+													<option>Kandy</option>
+													<option>Galle</option>
+												</select>
+											</div>
+
+											<!-- Auto fill button -->
+											<div class="btn-flip-icon z-index-9 mt-2 mt-md-1">
+												<button class="btn btn-dark shadow btn-round mb-0"><i class="fa-solid fa-right-left"></i></button>
+											</div>
+										</div>
+
+										<!-- Drop -->
+										<div class="col-md-6 text-md-end">
+											<div class="form-fs-lg form-control-transparent">
+												<label class="form-label small ms-3 ms-md-0 me-md-3">Drop</label>
+												<select class="form-select js-choice" data-search-enabled="true">
+													<option value="">Select Location</option>
+													<option>Colombo</option>
+													<option>Kandy</option>
+													<option>Galle</option>
+												</select>
+											</div>	
+										</div>
+
+										<!-- Date -->
+										<div class="col-md-6">
+											<div class="form-fs-lg form-control-transparent">
+												<label class="form-label small">Pickup Date</label>
+												<input type="text" class="form-control flatpickr" placeholder="Select date">
+											</div>
+										</div>
+
+										<!-- Time -->
+										<div class="col-md-6 text-md-end">
+											<div class="form-fs-lg form-control-transparent">
+												<label class="form-label small ms-3 ms-md-0 me-md-3">Pickup time</label>
+												<input type="text" class="form-control flatpickr text-md-end" data-enableTime="true" data-noCalendar="true" placeholder="Select time">
+											</div>
+										</div>
+
+									</div>
+								</div>
+								<!-- One way END -->
+
+								<!-- Round trip START -->
+								<div class="tab-pane fade" id="cab2-round-way" role="tabpanel" aria-labelledby="cab2-round-way-tab">
+									<div class="row g-2 g-md-4">
+										<!-- Pickup -->
+										<div class="col-md-6 position-relative">
+											<label class="form-label small">Pickup</label>
+											<div class="form-fs-lg form-control-transparent">
+												<select class="form-select js-choice" data-search-enabled="true">
+													<option value="">Select Location</option>
+													<option>Colombo</option>
+													<option>Kandy</option>
+													<option>Galle</option>
+												</select>
+											</div>	
+
+											<!-- Auto fill button -->
+											<div class="btn-flip-icon z-index-9 mt-2 mt-md-1">
+												<button class="btn btn-dark shadow btn-round mb-0"><i class="fa-solid fa-right-left"></i></button>
+											</div>
+										</div>
+
+										<!-- Drop -->
+										<div class="col-sm-6 text-sm-end">
+											<label class="form-label small ms-3 ms-md-0 me-md-3">Drop</label>
+											<div class="form-fs-lg form-control-transparent">
+												<select class="form-select js-choice" data-search-enabled="true">
+													<option value="">Select Location</option>
+													<option>Colombo</option>
+													<option>Kandy</option>
+													<option>Galle</option>
+												</select>
+											</div>	
+										</div>
+
+										<!-- Date -->
+										<div class="col-sm-6">
+											<div class="form-fs-lg form-control-transparent">
+												<label class="form-label small">Pickup Date</label>
+												<input type="text" class="form-control flatpickr" placeholder="Select date">
+											</div>
+										</div>
+
+										<!-- Time -->
+										<div class="col-sm-6 text-sm-end">
+											<div class="form-fs-lg form-control-transparent">
+												<label class="form-label small ms-3 ms-md-0 me-md-3">Pickup time</label>
+												<input type="text" class="form-control flatpickr text-sm-end" data-enableTime="true" data-noCalendar="true" placeholder="Select time">
+											</div>
+										</div>
+
+										<!-- Date -->
+										<div class="col-sm-6">
+											<div class="form-fs-lg form-control-transparent">
+												<label class="form-label small">Return Date</label>
+												<input type="text" class="form-control flatpickr" placeholder="Select date">
+											</div>
+										</div>
+
+										<!-- Time -->
+										<div class="col-sm-6 text-sm-end">
+											<div class="form-fs-lg form-control-transparent">
+												<label class="form-label small ms-3 ms-md-0 me-md-3">Return time</label>
+												<input type="text" class="form-control flatpickr text-sm-end" data-enableTime="true" data-noCalendar="true" placeholder="Select time">
+											</div>
+										</div>
+									</div> <!-- Row END -->
+								</div>
+								<!-- Round trip END -->
+							</div>
+							<!-- Tabs content END -->
+
+							<!-- Button -->
+							<div class="d-grid">
+								<button class="btn btn-dark mb-0">Search Trucks</button>
+							</div>
+
+						</form>
+						<!-- Card-body END -->
+					</div>
+				</div>
+				<!-- Search END -->
+			</div>
+		</div> <!-- Row END -->
+	</div>
+</section>
+<!-- =======================
+Main Banner END -->
+
+<!-- =======================
+Fleet START -->
+<section class="pt-0 pt-md-5">
+	<div class="container">
+
+		<!-- Title -->
+		<div class="row mb-4">
+			<div class="col-12 text-center">
+				<h2 class="mb-0">Range of Trucks</h2>
+			</div>
+		</div>
+
+		<div class="row g-4">
+			<!-- Fleet item -->
+			<div class="col-sm-4 col-xl-2">
+				<div class="card shadow text-center align-items-center h-100 p-4">
+					<!-- Image -->
+					<div class="icon-xxl bg-light rounded-circle">
+						<img src="assets/images/category/cab/trucks/8ft.png" class="w-90px" alt="">
+					</div>
+					<!-- Card body -->
+					<div class="card-body px-0 pb-0">
+						<h5 class="card-title"><a href="#" class="stretched-link">8ft</a></h5>
+						<span>(6 Trucks)</span>
+					</div>
+				</div>
+			</div>
+
+			<!-- Fleet item -->
+			<div class="col-sm-4 col-xl-2">
+				<div class="card shadow text-center align-items-center h-100 p-4">
+					<!-- Image -->
+					<div class="icon-xxl bg-light rounded-circle">
+						<img src="assets/images/category/cab/trucks/10ft.png" class="w-90px" alt="">
+					</div>
+					<!-- Card body -->
+					<div class="card-body px-0 pb-0">
+						<h5 class="card-title"><a href="#" class="stretched-link">10ft</a></h5>
+						<span>(8 Trucks)</span>
+					</div>
+				</div>
+			</div>
+
+			<!-- Fleet item -->
+			<div class="col-sm-4 col-xl-2">
+				<div class="card shadow text-center align-items-center h-100 p-4">
+					<!-- Image -->
+					<div class="icon-xxl bg-light rounded-circle">
+						<img src="assets/images/category/cab/trucks/12ft.png" class="w-90px" alt="">
+					</div>
+					<!-- Card body -->
+					<div class="card-body px-0 pb-0">
+						<h5 class="card-title"><a href="#" class="stretched-link">12ft</a></h5>
+						<span>(4 Trucks)</span>
+					</div>
+				</div>
+			</div>
+
+			<!-- Fleet item -->
+			<div class="col-sm-4 col-xl-2">
+				<div class="card shadow text-center align-items-center h-100 p-4">
+					<!-- Image -->
+					<div class="icon-xxl bg-light rounded-circle">
+						<img src="assets/images/category/cab/trucks/16ft.png" class="w-90px" alt="">
+					</div>
+					<!-- Card body -->
+					<div class="card-body px-0 pb-0">
+						<h5 class="card-title"><a href="#" class="stretched-link">16ft</a></h5>
+						<span>(5 Truvks)</span>
+					</div>
+				</div>
+			</div>
+
+			<!-- Fleet item -->
+			<div class="col-sm-4 col-xl-2">
+				<div class="card shadow text-center align-items-center h-100 p-4">
+					<!-- Image -->
+					<div class="icon-xxl bg-light rounded-circle">
+						<img src="assets/images/category/cab/trucks/18ft.png" class="w-90px" alt="">
+					</div>
+					<!-- Card body -->
+					<div class="card-body px-0 pb-0">
+						<h5 class="card-title"><a href="#" class="stretched-link">18ft</a></h5>
+						<span>(3 Trucks)</span>
+					</div>
+				</div>
+			</div>
+
+			<!-- Fleet item -->
+			<div class="col-sm-4 col-xl-2">
+				<div class="card shadow text-center align-items-center h-100 p-4">
+					<!-- Image -->
+					<div class="icon-xxl bg-light rounded-circle">
+						<img src="assets/images/category/cab/trucks/20ft.png" class="w-90px" alt="">
+					</div>
+					<!-- Card body -->
+					<div class="card-body px-0 pb-0">
+						<h5 class="card-title"><a href="#" class="stretched-link">20ft</a></h5>
+						<span>(9 Trucks)</span>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</section>
+<!-- =======================
+Fleet END -->
+
+<!-- =======================
+Why Choose Us START -->
+<section class="pt-0 pt-xl-5">
+	<div class="container">
+		<!-- Title -->
+		<div class="row mb-3 mb-sm-4">
+			<div class="col-12 text-center">
+				<h2>Why Choose Us</h2>
+			</div>
+		</div>
+
+		<div class="row g-4">
+			<!-- Category item -->
+			<div class="col-sm-6 col-lg-4">
+				<!-- Card START -->
+				<div class="card card-body shadow p-4 h-100">
+					<!-- Icon -->
+					<div class="icon-lg bg-primary bg-opacity-10 text-primary rounded-circle mb-4"><i class="bi bi-lightning-fill fs-5"></i></div>
+					<h5>Advance Booking</h5>
+					<p class="mb-0">Happiness prosperous impression had conviction For every delay in they Extremity now. </p>
+				</div>
+				<!-- Card END -->
+			</div>
+
+			<!-- Category item -->
+			<div class="col-sm-6 col-lg-4">
+				<!-- Card START -->
+				<div class="card card-body shadow p-4 h-100">
+					<!-- Icon -->
+					<div class="icon-lg bg-success bg-opacity-10 text-success rounded-circle mb-4"><i class="fa-solid fa-leaf fs-5"></i></div>
+					<h5>Economical Trip</h5>
+					<p class="mb-0">Extremity now strangers contained breakfast him discourse additions Sincerity.</p>
+				</div>
+				<!-- Card END -->
+			</div>
+
+			<!-- Category item -->
+			<div class="col-sm-6 col-lg-4">
+				<!-- Card START -->
+				<div class="card card-body shadow p-4 h-100">
+					<!-- Icon -->
+					<div class="icon-lg bg-warning bg-opacity-15 text-warning rounded-circle mb-4"><i class="bi bi-life-preserver fs-5"></i></div>
+					<h5>Secure and Safer</h5>
+					<p class="mb-0">Perpetual extremity now strangers contained breakfast him discourse additions.</p>
+				</div>
+				<!-- Card END -->
+			</div>
+
+			<!-- Category item -->
+			<div class="col-sm-6 col-lg-4">
+				<!-- Card START -->
+				<div class="card card-body shadow p-4 h-100">
+					<!-- Icon -->
+					<div class="icon-lg bg-danger bg-opacity-10 text-danger rounded-circle mb-4"><i class="fa-solid fa-car fs-5"></i></div>
+					<h5>Vehicle Options</h5>
+					<p class="mb-0">The Prosperous impression had conviction For every delay in they Extremity now. </p>
+				</div>
+				<!-- Card END -->
+			</div>
+
+			<!-- Category item -->
+			<div class="col-sm-6 col-lg-4">
+				<!-- Card START -->
+				<div class="card card-body shadow p-4 h-100">
+					<!-- Icon -->
+					<div class="icon-lg bg-orange bg-opacity-10 text-orange rounded-circle mb-4"><i class="fa-solid fa-wifi fs-5"></i></div>
+					<h5>Truck Entertainment</h5>
+					<p class="mb-0">Extremity now strangers contained breakfast him discourse additions Sincerity.</p>
+				</div>
+				<!-- Card END -->
+			</div>
+
+			<!-- Category item -->
+			<div class="col-sm-6 col-lg-4">
+				<!-- Card START -->
+				<div class="card card-body shadow p-4 h-100">
+					<!-- Icon -->
+					<div class="icon-lg bg-info bg-opacity-10 text-info rounded-circle mb-4"><i class="fa-solid fa-wheelchair fs-5"></i></div>
+					<h5>Polite Driver</h5>
+					<p class="mb-0">Perpetual extremity now strangers contained breakfast him discourse additions.</p>
+				</div>
+				<!-- Card END -->
+			</div>
+
+		</div> <!-- Row END -->
+
+	</div>
+</section>
+<!-- =======================
+Why Choose Us END -->
+
+
+</main>
+<!-- **************** MAIN CONTENT END **************** -->
+
+<!-- =======================
+Footer START -->
+<footer class="bg-dark pt-5">
+	<div class="container">
+		<!-- Row START -->
+		<div class="row g-4">
+
+			<!-- Widget 1 START -->
+			<div class="col-lg-3">
+				<!-- logo -->
+				<a href="index.html">
+					<!-- <img class="h-40px" src="assets/images/logo-light.svg" alt="logo"> -->
+					<h4 class="text-white">HireApp</h4>
+				</a>
+				<p class="my-3 text-muted">Some text here about this some text here some text here some text here some text here </p>
+				<p class="mb-2"><a href="#" class="text-muted text-primary-hover"><i class="bi bi-telephone me-2"></i>+1234 568 963</a> </p>
+				<p class="mb-0"><a href="#" class="text-muted text-primary-hover"><i class="bi bi-envelope me-2"></i>example@gmail.com</a></p>
+			</div>
+			<!-- Widget 1 END -->
+
+			<!-- Widget 2 START -->
+			<div class="col-lg-8 ms-auto">
+				<div class="row g-4">
+					<!-- Link block -->
+					<div class="col-6 col-md-3">
+						<h5 class="text-white mb-2 mb-md-4">Pages</h5>
+						<ul class="nav flex-column text-primary-hover">
+							<li class="nav-item"><a class="nav-link text-muted" href="index.html">Home</a></li>
+							<li class="nav-item"><a class="nav-link text-muted" href="list.html">List</a></li>
+							<li class="nav-item"><a class="nav-link text-muted" href="detail.html">Details</a></li>
+
+						</ul>
+					</div>
+
+					
+
+				</div>
+			</div>
+			<!-- Widget 2 END -->
+
+		</div><!-- Row END -->
+
+		
+
+		<!-- Payment and card -->
+		<div class="row g-4 justify-content-between mt-0 mt-md-2">
+
+			<!-- Payment card -->
+			<!-- <div class="col-sm-7 col-md-6 col-lg-4">
+				<h5 class="text-white mb-2">Payment & Security</h5>
+				<ul class="list-inline mb-0 mt-3">
+					<li class="list-inline-item"> <a href="#"><img src="assets/images/element/paypal.svg" class="h-30px" alt=""></a></li>
+					<li class="list-inline-item"> <a href="#"><img src="assets/images/element/visa.svg" class="h-30px" alt=""></a></li>
+					<li class="list-inline-item"> <a href="#"><img src="assets/images/element/mastercard.svg" class="h-30px" alt=""></a></li>
+					<li class="list-inline-item"> <a href="#"><img src="assets/images/element/expresscard.svg" class="h-30px" alt=""></a></li>
+				</ul>
+			</div> -->
+
+			<!-- Social media icon -->
+			<div class="col-sm-5 col-md-6 col-lg-3 text-sm-start">
+				<h5 class="text-white mb-2">Follow us on</h5>
+				<ul class="list-inline mb-0 mt-3">
+					<li class="list-inline-item"> <a class="btn btn-sm px-2 bg-facebook mb-0" href="#"><i class="fab fa-fw fa-facebook-f"></i></a> </li>
+					<!-- <li class="list-inline-item"> <a class="btn btn-sm shadow px-2 bg-instagram mb-0" href="#"><i class="fab fa-fw fa-instagram"></i></a> </li>
+					<li class="list-inline-item"> <a class="btn btn-sm shadow px-2 bg-twitter mb-0" href="#"><i class="fab fa-fw fa-twitter"></i></a> </li>
+					<li class="list-inline-item"> <a class="btn btn-sm shadow px-2 bg-linkedin mb-0" href="#"><i class="fab fa-fw fa-linkedin-in"></i></a> </li> -->
+				</ul>	
+			</div>
+		</div>
+
+		<!-- Divider -->
+		<hr class="mt-4 mb-0">
+
+		<!-- Bottom footer -->
+		<div class="row">
+			<div class="container">
+				<div class="d-lg-flex justify-content-between align-items-center py-3 text-center text-lg-start">
+					<!-- copyright text -->
+					<div class="text-muted text-primary-hover"> Copyrights ©2023 HireApp. | <a href="https://www.kiwiyaaa.vercel.app" class="text-muted">Kiwi</a>. </div>
+					<!-- copyright links-->
+					<div class="nav mt-2 mt-lg-0">
+						<ul class="list-inline text-primary-hover mx-auto mb-0">
+							<li class="list-inline-item me-0"><a class="nav-link py-1 text-muted" href="#">Privacy policy</a></li>
+							<li class="list-inline-item me-0"><a class="nav-link py-1 text-muted" href="#">Terms and conditions</a></li>
+							<!-- <li class="list-inline-item me-0"><a class="nav-link py-1 text-muted pe-0" href="#">Refund policy</a></li> -->
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+<!-- =======================
+Footer END -->
+
+<!-- Back to top -->
+<div class="back-top"></div>
+
+<!-- Bootstrap JS -->
+<script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Vendors -->
+<script src="assets/vendor/choices/js/choices.min.js"></script>
+<script src="assets/vendor/flatpickr/js/flatpickr.min.js"></script>
+
+<!-- ThemeFunctions -->
+<script src="assets/js/functions.js"></script>
+
+</body>
+
+</html>

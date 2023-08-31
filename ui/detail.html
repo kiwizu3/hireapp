@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+	<title>HireApp</title>
+
+	<!-- Meta Tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="author" content="Webestica.com">
+	<meta name="description" content="Booking - Multipurpose Online Booking Theme">
+
+	<!-- Dark mode -->
+	<script>
+		const storedTheme = localStorage.getItem('theme')
+ 
+		const getPreferredTheme = () => {
+			if (storedTheme) {
+				return storedTheme
+			}
+			return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+		}
+
+		const setTheme = function (theme) {
+			if (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+				document.documentElement.setAttribute('data-bs-theme', 'dark')
+			} else {
+				document.documentElement.setAttribute('data-bs-theme', theme)
+			}
+		}
+
+		setTheme(getPreferredTheme())
+
+		window.addEventListener('DOMContentLoaded', () => {
+		    var el = document.querySelector('.theme-icon-active');
+			if(el != 'undefined' && el != null) {
+				const showActiveTheme = theme => {
+				const activeThemeIcon = document.querySelector('.theme-icon-active use')
+				const btnToActive = document.querySelector(`[data-bs-theme-value="${theme}"]`)
+				const svgOfActiveBtn = btnToActive.querySelector('.mode-switch use').getAttribute('href')
+
+				document.querySelectorAll('[data-bs-theme-value]').forEach(element => {
+					element.classList.remove('active')
+				})
+
+				btnToActive.classList.add('active')
+				activeThemeIcon.setAttribute('href', svgOfActiveBtn)
+			}
+
+			window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+				if (storedTheme !== 'light' || storedTheme !== 'dark') {
+					setTheme(getPreferredTheme())
+				}
+			})
+
+			showActiveTheme(getPreferredTheme())
+
+			document.querySelectorAll('[data-bs-theme-value]')
+				.forEach(toggle => {
+					toggle.addEventListener('click', () => {
+						const theme = toggle.getAttribute('data-bs-theme-value')
+						localStorage.setItem('theme', theme)
+						setTheme(theme)
+						showActiveTheme(theme)
+					})
+				})
+
+			}
+		})
+		
+	</script>
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="assets/images/favicon.ico">
+
+	<!-- Google Font -->
+	<link rel="preconnect" href="https://fonts.googleapis.com/">
+	<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&amp;family=Poppins:wght@400;500;700&amp;display=swap">
+
+	<!-- Plugins CSS -->
+	<link rel="stylesheet" type="text/css" href="assets/vendor/font-awesome/css/all.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/vendor/bootstrap-icons/bootstrap-icons.css">
+	<link rel="stylesheet" type="text/css" href="assets/vendor/tiny-slider/tiny-slider.css">
+	<link rel="stylesheet" type="text/css" href="assets/vendor/glightbox/css/glightbox.css">
+	<link rel="stylesheet" type="text/css" href="assets/vendor/flatpickr/css/flatpickr.min.css">
+
+	<!-- Theme CSS -->
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+</head>
+
+<body>
+
+<!-- Header START -->
+<header class="navbar-light header-sticky">
+	<!-- Logo Nav START -->
+	<nav class="navbar navbar-expand-xl">
+		<div class="container">
+			<!-- Logo START -->
+			<a class="navbar-brand" href="index.html">
+				<h4>HireApp</h4>
+			</a>
+			<!-- Logo END -->
+
+			<!-- Responsive navbar toggler -->
+			<button class="navbar-toggler ms-auto ms-sm-0 p-0 p-sm-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-animation">
+					<span></span>
+					<span></span>
+					<span></span>
+				</span>
+        <span class="d-none d-sm-inline-block small">Menu</span>
+			</button>
+
+	
+
+			<!-- Main navbar START -->
+			<div class="navbar-collapse collapse" id="navbarCollapse">
+				<ul class="navbar-nav navbar-nav-scroll me-auto">
+
+					<!-- Nav item Listing -->
+					<li class="nav-item d-sm-flex d-block">
+						<a class="nav-link" href="index.html">Home</a>
+						<a class="nav-link" href="list.html">Listings</a>
+						<a class="nav-link" href="detail.html">Details</a>
+					</li>
+				</ul>
+			</div>
+
+		</div>
+	</nav>
+	<!-- Logo Nav END -->
+</header>
+<!-- Header END -->
+
+
+<!-- **************** MAIN CONTENT START **************** -->
+<main>
+	
+<!-- =======================
+Main Banner START -->
+<section class="pt-4">
+	<div class="container position-relative">
+		<!-- Title and button START -->
+		<div class="row">
+			<div class="col-12">
+				<!-- Meta -->
+				<div class="d-flex justify-content-between align-items-lg-center">
+					<!-- Title -->
+					<ul class="nav nav-divider align-items-center mb-0">
+						<li class="nav-item h4">Colombo - Colombo</li>
+						<li class="nav-item h5 fw-light">Inner City - Round Trip</li>
+						<li class="nav-item h5 fw-light">30 Sep 2023 - 04.42 PM</li>
+					</ul>
+
+					<!-- Buttons -->
+					<div class="ms-3">
+						<!-- Share button -->
+						<a href="#" class="btn btn-sm btn-light px-2 mb-0" role="button" id="dropdownShare" data-bs-toggle="dropdown" aria-expanded="false">
+							<i class="fa-solid fa-fw fa-share-alt"></i>
+						</a>
+						<!-- dropdown button -->
+						<ul class="dropdown-menu dropdown-menu-end min-w-auto shadow rounded" aria-labelledby="dropdownShare">
+							<li><a class="dropdown-item" href="#"><i class="fab fa-twitter-square me-2"></i>Twitter</a></li>
+							<li><a class="dropdown-item" href="#"><i class="fab fa-facebook-square me-2"></i>Facebook</a></li>
+							<li><a class="dropdown-item" href="#"><i class="fab fa-linkedin me-2"></i>LinkedIn</a></li>
+							<li><a class="dropdown-item" href="#"><i class="fa-solid fa-copy me-2"></i>Copy link</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Title and button END -->
+	</div>
+</section>
+<!-- =======================
+Main Banner END -->
+
+<!-- =======================
+Main Content START -->
+<section class="pt-0">
+	<div class="container" data-sticky-container>
+		<div class="row g-4">
+
+			<!-- Main content START -->
+			<div class="col-xl-8">
+				<div class="vstack gap-5">
+
+					<!-- Main cab list START -->
+					<div class="card border p-4">
+						<!-- Card body START -->
+						<div class="card-body p-0">
+							<div class="row g-4 align-items-center">
+								<!-- Image -->
+								<div class="col-md-4">
+									<div class="bg-light rounded-3 px-4 py-5">
+										<img src="assets/images/category/cab/trucks/12ft.png" alt="">
+									</div>
+								</div>
+
+								<!-- card body -->
+								<div class="col-md-8">
+									<!-- Title and rating -->
+									<div class="d-sm-flex justify-content-sm-between">
+										<!-- Card title -->
+										<div>
+											<h4 class="card-title mb-2">Toyota Lorry</h4>
+											<ul class="nav nav-divider h6 fw-normal mb-2">
+												<li class="nav-item">12 Feet</li>
+												<li class="nav-item">Something</li>
+												<li class="nav-item">Something</li>
+											</ul>
+										</div>
+										<!-- Rating Star -->
+										<ul class="list-inline mb-0">
+											<li class="list-inline-item me-0"><i class="fa-solid fa-star text-warning"></i></li>
+											<li class="list-inline-item me-0"><i class="fa-solid fa-star text-warning"></i></li>
+											<li class="list-inline-item me-0"><i class="fa-solid fa-star text-warning"></i></li>
+											<li class="list-inline-item me-0"><i class="fa-solid fa-star text-warning"></i></li>
+											<li class="list-inline-item"><i class="fa-solid fa-star-half-alt text-warning"></i></li>
+										</ul>
+									</div>
+
+									<!-- List -->
+									<ul class="list-group list-group-borderless mt-2 mb-0">
+											<li class="list-group-item d-flex pb-0 mb-0">
+												<span class="h6 fw-normal mb-0"><i class="bi bi-check-circle me-2"></i>600Kms included. After that 250 LKR/Kms</span>
+											</li>
+											<li class="list-group-item d-flex pb-0 mb-0">
+												<span class="h6 fw-normal mb-0"><i class="bi bi-check-circle me-2"></i>Max Storage Amount</span>
+											</li>
+											<li class="list-group-item d-flex pb-0 mb-0">
+												<span class="h6 fw-normal mb-0"><i class="bi bi-check-circle me-2"></i>Diesel</span>
+											</li>
+									</ul>
+								</div>
+							</div>
+						</div>	
+						<!-- Card body END -->
+
+						<!-- Card footer -->
+						<div class="card-footer p-0 pt-4">
+							<div class="hstack gap-3 flex-wrap">
+								<!-- Item -->
+								<h6 class="bg-success bg-opacity-10 text-success fw-light rounded-2 d-inline-block mb-0 py-2 px-4">
+									Free Cancellation, till 1 hour of Pick up
+								</h6>
+			
+								<!-- Item -->
+								<h6 class="bg-success bg-opacity-10 text-success fw-light rounded-2 d-inline-block mb-0 py-2 px-4">
+									Free waiting up to 45 minutes
+								</h6>
+							</div>
+						</div>
+					</div>
+					<!-- Main cab list END -->
+
+					<!-- Trip Details START -->
+					<div class="card border">
+						<!-- Card header -->
+						<div class="card-header border-bottom bg-transparent">
+							<h4 class="mb-0">Hire Details</h4>
+						</div>
+
+						<!-- Card body START -->
+						<div class="card-body">
+							<!-- Form START -->
+							<form class="row g-4">
+								<!-- Input -->
+								<div class="col-md-6">
+									<div class="form-control-bg-light">
+										<label class="form-label">Pickup Address</label>
+										<input type="text" class="form-control form-control-lg" placeholder="Enter exact pick up address" value="36 8th Lane, Colomb 00300">
+										<div class="form-text">This will help our truck driver reach you on time.</div>
+									</div>
+								</div>
+
+								<!-- Input -->
+								<div class="col-md-6">
+									<div class="form-control-bg-light">
+										<label class="form-label">Drop Address</label>
+										<input type="text" class="form-control form-control-lg" placeholder="Enter drop address" value="36 8th Lane, Colombo 00300">
+									</div>
+								</div>
+
+								<h5 class="mb-0 mt-4">Driver Information</h5>
+
+								<!-- Radio button -->
+								<div class="col-md-4">
+									<label class="form-label">Gender</label>
+									<div>
+										<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+											<input type="radio" class="btn-check" name="btnradio" id="btnradio1" checked="">
+											<label class="btn btn-lg btn-light btn-dark-bg-check mb-0" for="btnradio1">Male</label>
+										
+											<input type="radio" class="btn-check" name="btnradio" id="btnradio2">
+											<label class="btn btn-lg btn-light btn-dark-bg-check mb-0" for="btnradio2">Female</label>
+										</div>
+									</div>	
+								</div>
+
+								<!-- Input -->
+								<div class="col-md-8">
+									<div class="form-control-bg-light">
+										<label class="form-label">Name</label>
+										<input type="text" class="form-control form-control-lg" placeholder="Enter your name">
+									</div>
+								</div>
+
+								<!-- Input -->
+								<div class="col-md-6">
+									<div class="form-control-bg-light">
+										<label class="form-label">Email id</label>
+										<input type="email" class="form-control form-control-lg" placeholder="Enter your email">
+									</div>
+								</div>
+
+								<!-- Input -->
+								<div class="col-md-6">
+									<div class="form-control-bg-light">
+										<label class="form-label">Mobile number</label>
+										<input type="text" class="form-control form-control-lg" placeholder="Enter your mobile number">
+									</div>
+								</div>
+							</form>
+							<!-- Form END -->
+						</div>
+						<!-- Card body END -->
+					</div>
+					<!-- Trip Details END -->
+
+					<!-- Driver and cab detail START -->
+					<div class="card bg-transparent">
+
+						<!-- Card header -->
+						<div class="card-header border-bottom bg-transparent px-0 pt-0">
+							<h4 class="mb-0">Truck details</h4>
+						</div>
+
+						<!-- Card body -->
+						<div class="card-body pt-4 p-0">
+							<!-- List -->
+							<ul>
+								<li class="mb-2">Due to traffic or any other unavoidable reason, the pickup may be delayed for 30 minutes.</li>
+								<li>For nighttime driving (between 11:00 pm to 7:00 am) on any of the nights, there will be a night driver charge of 1000 LKR.</li>
+							</ul>
+
+							<!-- Cab images -->
+							<h5>Truck Images</h5>
+
+							<!-- Alert box -->
+							<div class="alert alert-warning" role="alert">
+								All pictures shown are for illustration purposes only. The actual product may vary due to product enhancement.
+							</div>
+
+							<!-- Images -->
+							<div class="row">
+								<!-- Slider START -->
+								<div class="tiny-slider arrow-round arrow-xs arrow-dark">
+									<div class="tiny-slider-inner rounded-2" data-autoplay="false" data-arrow="true" data-dots="false" data-items="3" data-items-sm="2">
+										<!-- Image item -->
+										<div>
+											<a class="w-100 h-100" data-glightbox data-gallery="gallery" href="assets/images/category/cab/4by3/02.jpg">
+												<div class="card card-element-hover card-overlay-hover overflow-hidden">
+													<!-- Image -->
+													<img src="assets/images/category/cab/trucks/10ft.png" class="rounded-3" alt="">
+													<!-- Full screen button -->
+													<div class="hover-element w-100 h-100">
+														<i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
+													</div>
+												</div>
+											</a>
+										</div>
+
+										<!-- Image item -->
+										<div>
+											<a class="w-100 h-100" data-glightbox data-gallery="gallery" href="assets/images/category/cab/4by3/01.jpg">
+												<div class="card card-element-hover card-overlay-hover overflow-hidden">
+													<!-- Image -->
+													<img src="assets/images/category/cab/trucks/18ft.png" class="rounded-3" alt="">
+													<!-- Full screen button -->
+													<div class="hover-element w-100 h-100">
+														<i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
+													</div>
+												</div>
+											</a>
+										</div>
+
+										<!-- Image item -->
+										<div>
+											<a class="w-100 h-100" data-glightbox data-gallery="gallery" href="assets/images/category/cab/4by3/03.jpg">
+												<div class="card card-element-hover card-overlay-hover overflow-hidden">
+													<!-- Image -->
+													<img src="assets/images/category/cab/trucks/12ft.png" class="rounded-3" alt="">
+													<!-- Full screen button -->
+													<div class="hover-element w-100 h-100">
+														<i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
+													</div>
+												</div>
+											</a>
+										</div>
+
+										<!-- Image item -->
+										<div>
+											<a class="w-100 h-100" data-glightbox data-gallery="gallery" href="assets/images/category/cab/4by3/04.jpg">
+												<div class="card card-element-hover card-overlay-hover overflow-hidden">
+													<!-- Image -->
+													<img src="assets/images/category/cab/trucks/20ft.png" class="rounded-3" alt="">
+													<!-- Full screen button -->
+													<div class="hover-element w-100 h-100">
+														<i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
+													</div>
+												</div>
+											</a>
+										</div>
+
+										<!-- Image item -->
+										<div>
+											<a class="w-100 h-100" data-glightbox data-gallery="gallery" href="assets/images/category/cab/4by3/05.jpg">
+												<div class="card card-element-hover card-overlay-hover overflow-hidden">
+													<!-- Image -->
+													<img src="assets/images/category/cab/trucks/16ft.png" class="rounded-3" alt="">
+													<!-- Full screen button -->
+													<div class="hover-element w-100 h-100">
+														<i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
+													</div>
+												</div>
+											</a>
+										</div>
+									</div>
+								</div>
+								<!-- Slider END -->
+							</div>
+						</div>	
+
+					</div>
+					<!-- Driver and cab detail END -->
+					
+				</div>
+			</div>
+			<!-- Main content END -->
+
+			<!-- Sidebar START -->
+			<aside class="col-xl-4">
+				<div data-sticky data-margin-top="80" data-sticky-for="1199">
+					<div class="card card-body bg-light p-4">
+						<!-- Title -->
+						<h6 class="text-danger fw-normal">Hurry! Limited trucks left</h6>
+
+						<!-- List -->
+						<ul class="list-group list-group-borderless mb-0">
+							<li class="list-group-item d-flex justify-content-between">
+								<span class="h6 fw-light mb-0">Base Price</span>
+								<span class="h6 fw-light mb-0">26000 LKR</span>
+							</li>
+							<li class="list-group-item d-flex justify-content-between">
+								<span class="h6 fw-light mb-0">State Tax</span>
+								<span class="h6 fw-light mb-0">500 LKR</span>
+							</li>
+							<li class="list-group-item d-flex justify-content-between">
+								<span class="h6 fw-light mb-0">Night Charge</span>
+								<span class="h6 fw-light mb-0">1000 LKR</span>
+							</li>
+							<li class="list-group-item d-flex justify-content-between">
+								<span class="h6 fw-light mb-0">Convenience Fee</span>
+								<span class="h6 fw-light mb-0">250 LKR</span>
+							</li>
+							<li class="list-group-item py-0"><hr class="my-0"></li> 
+							<!-- Divider -->
+							<li class="list-group-item d-flex justify-content-between pb-0">
+								<span class="h5 fw-normal mb-0">Total</span>
+								<span class="h5 fw-normal mb-0">27750 LKR</span>
+							</li>
+						</ul>
+
+						<div class="d-grid mt-4 gap-2">
+							<div class="form-check form-check-inline mb-0">
+								<input class="form-check-input" type="radio" name="discountOptions" id="discount1" value="option1" checked="">
+								<label class="form-check-label h6 fw-normal mb-0" for="discount1">Pay 13875 LKR now (Half Payment)</label>
+							</div>
+
+							<div class="form-check form-check-inline mb-0">
+								<input class="form-check-input" type="radio" name="discountOptions" id="discount2" value="option2">
+								<label class="form-check-label h6 fw-normal mb-0" for="discount2">Pay 27750 LKR now (Full payment)</label>
+							</div>
+
+							<!-- Button -->
+							<a href="#" class="btn btn-dark disabled mb-0 mt-2">Pay Now</a>
+						</div>
+					</div>
+				</div> 
+			</aside>
+			<!-- Sidebar END -->
+		</div>
+	</div>
+</section>
+<!-- =======================
+Main Content END -->
+
+</main>
+<!-- **************** MAIN CONTENT END **************** -->
+
+<!-- =======================
+Footer START -->
+<footer class="bg-dark pt-5">
+	<div class="container">
+		<!-- Row START -->
+		<div class="row g-4">
+
+			<!-- Widget 1 START -->
+			<div class="col-lg-3">
+				<!-- logo -->
+				<a href="index.html">
+					<!-- <img class="h-40px" src="assets/images/logo-light.svg" alt="logo"> -->
+					<h4 class="text-white">HireApp</h4>
+				</a>
+				<p class="my-3 text-muted">Some text here about this some text here some text here some text here some text here </p>
+				<p class="mb-2"><a href="#" class="text-muted text-primary-hover"><i class="bi bi-telephone me-2"></i>+1234 568 963</a> </p>
+				<p class="mb-0"><a href="#" class="text-muted text-primary-hover"><i class="bi bi-envelope me-2"></i>example@gmail.com</a></p>
+			</div>
+			<!-- Widget 1 END -->
+
+			<!-- Widget 2 START -->
+			<div class="col-lg-8 ms-auto">
+				<div class="row g-4">
+					<!-- Link block -->
+					<div class="col-6 col-md-3">
+						<h5 class="text-white mb-2 mb-md-4">Pages</h5>
+						<ul class="nav flex-column text-primary-hover">
+							<li class="nav-item"><a class="nav-link text-muted" href="index.html">Home</a></li>
+							<li class="nav-item"><a class="nav-link text-muted" href="list.html">List</a></li>
+							<li class="nav-item"><a class="nav-link text-muted" href="detail.html">Details</a></li>
+
+						</ul>
+					</div>
+
+					
+
+				</div>
+			</div>
+			<!-- Widget 2 END -->
+
+		</div><!-- Row END -->
+
+		
+
+		<!-- Payment and card -->
+		<div class="row g-4 justify-content-between mt-0 mt-md-2">
+
+			<!-- Payment card -->
+			<!-- <div class="col-sm-7 col-md-6 col-lg-4">
+				<h5 class="text-white mb-2">Payment & Security</h5>
+				<ul class="list-inline mb-0 mt-3">
+					<li class="list-inline-item"> <a href="#"><img src="assets/images/element/paypal.svg" class="h-30px" alt=""></a></li>
+					<li class="list-inline-item"> <a href="#"><img src="assets/images/element/visa.svg" class="h-30px" alt=""></a></li>
+					<li class="list-inline-item"> <a href="#"><img src="assets/images/element/mastercard.svg" class="h-30px" alt=""></a></li>
+					<li class="list-inline-item"> <a href="#"><img src="assets/images/element/expresscard.svg" class="h-30px" alt=""></a></li>
+				</ul>
+			</div> -->
+
+			<!-- Social media icon -->
+			<div class="col-sm-5 col-md-6 col-lg-3 text-sm-start">
+				<h5 class="text-white mb-2">Follow us on</h5>
+				<ul class="list-inline mb-0 mt-3">
+					<li class="list-inline-item"> <a class="btn btn-sm px-2 bg-facebook mb-0" href="#"><i class="fab fa-fw fa-facebook-f"></i></a> </li>
+					<!-- <li class="list-inline-item"> <a class="btn btn-sm shadow px-2 bg-instagram mb-0" href="#"><i class="fab fa-fw fa-instagram"></i></a> </li>
+					<li class="list-inline-item"> <a class="btn btn-sm shadow px-2 bg-twitter mb-0" href="#"><i class="fab fa-fw fa-twitter"></i></a> </li>
+					<li class="list-inline-item"> <a class="btn btn-sm shadow px-2 bg-linkedin mb-0" href="#"><i class="fab fa-fw fa-linkedin-in"></i></a> </li> -->
+				</ul>	
+			</div>
+		</div>
+
+		<!-- Divider -->
+		<hr class="mt-4 mb-0">
+
+		<!-- Bottom footer -->
+		<div class="row">
+			<div class="container">
+				<div class="d-lg-flex justify-content-between align-items-center py-3 text-center text-lg-start">
+					<!-- copyright text -->
+					<div class="text-muted text-primary-hover"> Copyrights ©2023 HireApp. | <a href="https://www.kiwiyaaa.vercel.app" class="text-muted">Kiwi</a>. </div>
+					<!-- copyright links-->
+					<div class="nav mt-2 mt-lg-0">
+						<ul class="list-inline text-primary-hover mx-auto mb-0">
+							<li class="list-inline-item me-0"><a class="nav-link py-1 text-muted" href="#">Privacy policy</a></li>
+							<li class="list-inline-item me-0"><a class="nav-link py-1 text-muted" href="#">Terms and conditions</a></li>
+							<!-- <li class="list-inline-item me-0"><a class="nav-link py-1 text-muted pe-0" href="#">Refund policy</a></li> -->
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+<!-- =======================
+Footer END -->
+
+<!-- Back to top -->
+<div class="back-top"></div>
+
+<!-- Bootstrap JS -->
+<script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Vendors -->
+<script src="assets/vendor/sticky-js/sticky.min.js"></script>
+<script src="assets/vendor/glightbox/js/glightbox.js"></script>
+<script src="assets/vendor/flatpickr/js/flatpickr.min.js"></script>
+<script src="assets/vendor/tiny-slider/tiny-slider.js"></script>
+
+<!-- ThemeFunctions -->
+<script src="assets/js/functions.js"></script>
+
+</body>
+
+<!-- Mirrored from booking.webestica.com/cab-detail.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2023 18:34:05 GMT -->
+</html>
