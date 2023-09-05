@@ -1,0 +1,165 @@
+@use "./base/mixin.scss" as mixin;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Roboto:wght@400;500;700&display=swap");
+@import "./base/reset.scss";
+
+
+:root {
+  height: 100%!important;
+}
+
+#__next{
+  height: 100%!important;
+}
+
+html,
+body {
+  font-family: "Poppins", sans-serif;
+  padding: 0;
+  margin: 0;
+  font-style: normal;
+  font-weight: 400;
+  height: 100%!important;
+}
+
+h1 {
+  font-size: 2.2rem;
+  letter-spacing: 0.03em;
+  font-weight: 300;
+  text-align: center;
+  // text-transform: uppercase;
+  letter-spacing: -0.03em;
+  // color: blue;
+
+  @include mixin.tablet {
+    font-size: 4rem;
+    text-align: left;
+  }
+}
+
+h2 {
+  letter-spacing: -0.03em;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+
+  @include mixin.tablet {
+    font-size: 1.5rem;
+  }
+}
+
+p {
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.2;
+  margin-top: 1rem;
+}
+
+ul li {
+  font-size: 0.7rem;
+
+  @include mixin.tablet {
+    font-size: 0.8rem;
+  }
+}
+
+
+.dashboard-sidebar {
+  height: 100vh !important;
+  width: 4.5rem;
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show>.nav-link {
+  color: #fff;
+  background-color: #ffb6d5;
+}
+
+
+.main-item{
+  font-weight:bold;
+  margin-right: 1rem;
+}
+
+
+.spinner-border{
+  border-right-color: transparent !important;
+}
+
+
+.btn-icon{
+  width: 1rem;
+  fill: #ffffff;
+}
+
+.product-image{
+  width: 5rem;
+}
+
+
+.gallery-title
+{
+    font-size: 36px;
+    color: #42B32F;
+    text-align: center;
+    font-weight: 500;
+    margin-bottom: 70px;
+}
+.gallery-title:after {
+    content: "";
+    position: absolute;
+    width: 7.5%;
+    left: 46.5%;
+    height: 45px;
+    border-bottom: 1px solid #5e5e5e;
+}
+.filter-button
+{
+    font-size: 18px;
+    border: 1px solid #42B32F;
+    border-radius: 5px;
+    text-align: center;
+    color: #42B32F;
+    margin-bottom: 30px;
+
+}
+.filter-button:hover
+{
+    font-size: 18px;
+    border: 1px solid #42B32F;
+    border-radius: 5px;
+    text-align: center;
+    color: #ffffff;
+    background-color: #42B32F;
+
+}
+.btn-default:active .filter-button:active
+{
+    background-color: #42B32F;
+    color: white;
+}
+
+.port-image
+{
+    width: 100%;
+}
+
+.gallery_product
+{
+    margin-bottom: 30px;
+}
+
+
+.border-dotted{
+  border: 1px --var(dark) dotted;
+}
+
+.justifyContentCenter {
+  justify-content: start;
+}
+
+@media only screen and (max-width: 600px) {
+  .justifyContentCenter {
+    justify-content: center;
+  }
+}
