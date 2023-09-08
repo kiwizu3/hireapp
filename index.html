@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Truck Rental Services</title>
+    <!-- Add Bootstrap CSS link -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Add custom CSS for styling -->
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="#">Truck Rentals</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#services">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <h1>Truck Rental Services</h1>
+                <p>Move your goods with ease using our reliable and affordable truck rental services.</p>
+                <a href="#contact" class="btn btn-primary">Get Started</a>
+            </div>
+            <div class="col-lg-6">
+                <img src="truck-image.jpg" alt="Truck Rental" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <h2>About Us</h2>
+                <p>We are a trusted truck rental company with a fleet of modern trucks to cater to your transportation needs.</p>
+            </div>
+            <div class="col-lg-6">
+                <img src="about-image.jpg" alt="About Us" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section id="services" class="services">
+    <div class="container">
+        <h2>Our Services</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="service-item">
+                    <h3>Local Transportation</h3>
+                    <p>We offer reliable local transportation services to move your goods within the city.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="service-item">
+                    <h3>Long-Distance Hauling</h3>
+                    <p>For long-distance transportation needs, our trucks are equipped to handle the journey.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="service-item">
+                    <h3>Custom Solutions</h3>
+                    <p>We can tailor our services to meet your specific transportation requirements.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="contact">
+    <div class="container">
+        <h2>Contact Us</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <p>If you have any questions or need assistance, feel free to get in touch with us.</p>
+                <ul class="contact-info">
+                    <li><i class="bi bi-geo-alt"></i>123 Main Street, City, Country</li>
+                    <li><i class="bi bi-phone"></i>+1 123-456-7890</li>
+                    <li><i class="bi bi-envelope"></i>info@truckrentals.com</li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <form>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea class="form-control" id="message" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <p>&copy; 2023 Truck Rentals</p>
+    </div>
+</footer>
+
+<!-- Add Bootstrap JS and jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
